@@ -3,6 +3,14 @@ from app.models import Products, ProductAnalysis, ProductReview, CompetitorAnaly
 from app.service.ChatGptService import analyze
 
 
+def getLatest(user):
+    try:
+        return Products.objects.filter(user=user).order_by('created_at')[:10].values()
+    except Exception as e:
+        print(e)
+        return []
+
+
 def save(request):
     try:
         with transaction.atomic():

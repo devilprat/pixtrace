@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -15,4 +17,6 @@ def index(request, form=None):
             return redirect('dashboard')
         except Exception as e:
             messages.error(request, str(e))
-    return render(request, 'admin/dashboard.html')
+    productList = ProductService.getLatest(request.user)
+    print(productList)
+    return render(request, 'admin/dashboard.html', {'productList': productList})

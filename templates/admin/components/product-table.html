@@ -1,0 +1,34 @@
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in productList %}
+                <tr>
+                    <td>
+                        <div class="product_image">
+                            <img src="/uploads/{{ product.image }}"/>
+                        </div>
+                    </td>
+                    <td>{{ product.created_at }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>
+                        <a href="#">
+                            <i class="bi bi-journal-text"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

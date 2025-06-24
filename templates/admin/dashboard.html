@@ -30,9 +30,21 @@
                     </div>
                     {{ errors.file }}
                 </div>
-
             </form>
+
+        </div>
+        <div class="col-12 mb-4">
             <hr/>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Latest Search Record
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/product-table.html' %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
