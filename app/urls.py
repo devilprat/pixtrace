@@ -26,5 +26,6 @@ urlpatterns = [
     path("logout", AuthController.logout, name="logout"),
     path("admin/dashboard", DashboardController.index, name="dashboard"),
     path("admin/history", ProductController.history, name="history"),
+    path("admin/analysis", ProductController.analysis, name="analysis"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

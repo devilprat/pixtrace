@@ -1,5 +1,7 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import transaction
+from django.db.models import Prefetch
+
 from app.models import Products, ProductAnalysis, ProductReview, CompetitorAnalysis
 from app.service.ChatGptService import analyze
 
@@ -10,6 +12,18 @@ def getLatest(user):
     except Exception as e:
         print(e)
         return []
+
+
+def getById(id, user):
+    try:
+        return Products.objects.filter(id=id, user=user).prefetch_related(
+            Prefetch('product_analysis', queryset=ProductAnalysis.objects.all()),
+            Prefetch('product_review', queryset=ProductReview.objects.all()),
+            Prefetch('competitor_analysis', queryset=CompetitorAnalysis.objects.all())
+        ).values()
+    except Exception as e:
+        print(e)
+        raise Exception(str(e))
 
 
 def getHistory(user, page):

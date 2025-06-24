@@ -1,28 +1,17 @@
 from functools import wraps
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 
-def validate_get_request(form_class, template_name, services=None):
+def validate_get_request(form_class):
     def decorator(view_func):
         @wraps(view_func)
         def wrapper(request, *args, **kwargs):
             if request.method == 'GET':
                 form = form_class(request.GET)
                 if not form.is_valid():
-                    context_data = {}
-                    if services:
-                        for service in services:
-                            func = service.get('func')
-                            name = service.get('name')
-                            params = service.get('params', [])
-                            resolved_params = [getattr(request, param) if param == 'user' else None for param in params]
-                            context_data[name] = func(*resolved_params)
-                    response = {
-                        'errors': form.errors,
-                        'old': form.cleaned_data,
-                        **context_data,
-                    }
-                    return render(request, template_name, response)
+                    messages.error(request, "Invalid request. Please try again.")
+                    return redirect('dashboard')
                 return view_func(request, form, *args, **kwargs)
             return view_func(request, None, *args, **kwargs)
 
