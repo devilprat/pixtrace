@@ -1,0 +1,38 @@
+{% extends 'layout/app.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h3>Dashboard</h3>
+        </div>
+        <div class="col-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file">Upload Product Image for Market & Competitor Analysis</label>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input id="file" type="file" name="file" class="form-control" accept="image/*"/>
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">
+                                <i class="bi bi-search"></i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                    {{ errors.file }}
+                </div>
+
+            </form>
+            <hr/>
+        </div>
+    </div>
+{% endblock %}
