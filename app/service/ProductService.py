@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import transaction
 from app.models import Products, ProductAnalysis, ProductReview, CompetitorAnalysis
 from app.service.ChatGptService import analyze
@@ -5,10 +6,38 @@ from app.service.ChatGptService import analyze
 
 def getLatest(user):
     try:
-        return Products.objects.filter(user=user).order_by('created_at')[:10].values()
+        return Products.objects.filter(user=user).order_by('-created_at')[:10].values()
     except Exception as e:
         print(e)
         return []
+
+
+def getHistory(user, page):
+    try:
+        productList = Products.objects.filter(user=user).order_by('-created_at')
+        paginator = Paginator(productList, 20)
+        try:
+            page_obj = paginator.page(page)
+        except PageNotAnInteger:
+            page_obj = paginator.page(1)
+        except EmptyPage:
+            page_obj = paginator.page(paginator.num_pages)
+        return {
+            'productList': list(page_obj.object_list.values()),
+            'current_page': page_obj.number,
+            'total_pages': paginator.num_pages,
+            'has_next': page_obj.has_next(),
+            'has_previous': page_obj.has_previous()
+        }
+    except Exception as e:
+        print(e)
+        return {
+            "productList": [],
+            "total_pages": 0,
+            "current_page": 1,
+            "has_next": False,
+            "has_previous": False
+        }
 
 
 def save(request):

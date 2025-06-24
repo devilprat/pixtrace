@@ -9,7 +9,11 @@ from app.service import ProductService
 
 
 @login_required(login_url='index')
-@validate_post_request(SearchRequest, 'admin/dashboard.html')
+@validate_post_request(SearchRequest, 'admin/dashboard.html', [{
+    "name": "productList",
+    "func": ProductService.getLatest,
+    "params": ['user']
+}])
 def index(request, form=None):
     if request.method == 'POST':
         try:

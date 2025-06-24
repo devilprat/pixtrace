@@ -8,5 +8,9 @@ from app.service import ProductService
 
 @login_required(login_url='index')
 def history(request):
-    productList = ProductService.getLatest(request.user)
-    return render(request, 'admin/history.html', {'productList': productList})
+    if request.method == 'GET':
+        page = request.GET.get('page', 1)
+        historyData = ProductService.getHistory(request.user, page)
+        return render(request, 'admin/history.html',
+                      historyData)
+    return redirect('dashboard')
