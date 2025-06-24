@@ -4,7 +4,200 @@
 {% block content %}
     <div class="row">
         <div class="col-12 mb-4">
-            <h3>Product Analysis</h3>
+            <div class="d-flex gap-4 align-items-start">
+                <div class="product_image">
+                    <img src="/uploads/{{ product.image }}"/>
+                </div>
+                <div>
+                    <h3>Product Analysis: {{ product.name }}</h3>
+                    <small>Category: {{ product.category }}</small><br/>
+                    <small>published at: {{ product.created_at }}</small>
+                </div>
+            </div>
         </div>
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div id="sales_history"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div id="units_sales_history"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Market History
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/market-history.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div id="sales_prediction"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div id="units_sales_prediction"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Market Prediction
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/market-prediction.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Competitor Analysis
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/competitor-analysis.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Audience Review
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/product-review.html' %}
+                </div>
+            </div>
+        </div>
+
     </div>
+{% endblock %}
+{% block script %}
+    <!-- SALES HISTORY -->
+    <script>
+        var options = {
+            chart: {type: 'area'},
+            title: {
+                text: 'Total Sales History',
+                align: 'center',
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Sales',
+                data: {{ chart.sales_history.values|safe }}
+            }],
+            xaxis: {
+                categories: {{ chart.sales_history.labels|safe }}
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#sales_history"), options);
+        chart.render();
+    </script>
+    <!-- UNITS SOLD HISTORY -->
+    <script>
+        var options = {
+            chart: {type: 'area'},
+            title: {
+                text: 'Total Units Sold History',
+                align: 'center',
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Units',
+                data: {{ chart.units_sales_history.values|safe }}
+            }],
+            xaxis: {
+                categories: {{ chart.units_sales_history.labels|safe }}
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#units_sales_history"), options);
+        chart.render();
+    </script>
+    <!-- SALES PREDICTION -->
+    <script>
+        var options = {
+            chart: {type: 'area'},
+            title: {
+                text: 'Total Sales Prediction',
+                align: 'center',
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Units',
+                data: {{ chart.sales_prediction.values|safe }}
+            }],
+            xaxis: {
+                categories: {{ chart.sales_prediction.labels|safe }}
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#sales_prediction"), options);
+        chart.render();
+    </script>
+    <!-- UNIT SALE PREDICTION -->
+    <script>
+        var options = {
+            chart: {type: 'area'},
+            title: {
+                text: 'Total Units Sale Prediction',
+                align: 'center',
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            series: [{
+                name: 'Units',
+                data: {{ chart.units_sales_prediction.values|safe }}
+            }],
+            xaxis: {
+                categories: {{ chart.units_sales_prediction.labels|safe }}
+            }
+        };
+        var chart = new ApexCharts(document.querySelector("#units_sales_prediction"), options);
+        chart.render();
+    </script>
+
 {% endblock %}

@@ -13,7 +13,7 @@ class CompetitorAnalysis(models.Model):
     weaknesses = models.TextField(null=True)
     market_share_estimate = models.TextField(null=True)
     positioning = models.TextField(null=True)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='competitor_analysis')
 
     class Meta:
         db_table = 'competitor_analysis'

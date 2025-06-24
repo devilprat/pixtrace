@@ -16,13 +16,14 @@ def getLatest(user):
 
 def getById(id, user):
     try:
-        return Products.objects.filter(id=id, user=user).prefetch_related(
-            Prefetch('product_analysis', queryset=ProductAnalysis.objects.all()),
-            Prefetch('product_review', queryset=ProductReview.objects.all()),
-            Prefetch('competitor_analysis', queryset=CompetitorAnalysis.objects.all())
-        ).values()
+        return (Products.objects.prefetch_related(
+            'product_analysis',
+            'product_review',
+            'competitor_analysis'
+        ).get(id=id, user=user))
     except Exception as e:
         print(e)
+        print("aa")
         raise Exception(str(e))
 
 

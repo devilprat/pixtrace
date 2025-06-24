@@ -1,0 +1,58 @@
+{% load tz %}
+{% now "Y" as current_year %}
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Year</th>
+                <th>Analysis</th>
+                <th>Avg. Rate</th>
+                <th>Growth Rate</th>
+                <th>Market Trend</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for analysis in product.product_analysis.all %}
+                {% if analysis.year <=  current_year %}
+                    <tr>
+                        <td>{{ analysis.year }}</td>
+                        <td>
+                            <div class="mb-3">
+                                <b><u>Market Position:</u></b><br/>
+                                {{ analysis.market_position }}
+                            </div>
+                            <div class="mb-3">
+                                <b><u>Market Drivers:</u></b><br/>
+                                {{ analysis.market_drivers }}
+                            </div>
+                            <div class="mb-3">
+                                <b><u>Market Challenges:</u></b><br/>
+                                {{ analysis.market_challenges }}
+                            </div>
+                            <div class="mb-3">
+                                <b><u>Remarks:</u></b><br/>
+                                {{ analysis.remarks }}
+                            </div>
+                        </td>
+                        <td>{{ analysis.average_rate }}</td>
+                        <td>
+                            {% if '-' in analysis.growth_rate %}
+                                <b class="text-danger">{{ analysis.growth_rate|cut:"-" }}</b>
+                            {% else %}
+                                <b class="text-success">{{ analysis.growth_rate }}</b>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge {% if analysis.market_trend == 'plateau' %}bg-danger
+                                {% elif analysis.market_trend == 'decline' %}bg-danger{% else %}bg-primary{% endif %}">
+                                {{ analysis.market_trend }}
+                            </span>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

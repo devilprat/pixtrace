@@ -19,6 +19,31 @@ td, th {
     vertical-align: middle;
 }
 
+th {
+    font-size: 12px;
+}
+
+/* --------------------- */
+/* BADGE */
+/* --------------------- */
+.badge {
+    color: #ffffff;
+    font-size: 12px !important;
+    text-transform: capitalize;
+}
+
+.bg-primary {
+    background: var(--primary-color) !important;
+}
+
+.bg-warning {
+    background: #e0b534 !important;
+}
+
+.bg-danger {
+    background: #de626e !important;
+}
+
 /* --------------------- */
 /* BUTTON */
 /* --------------------- */
@@ -54,6 +79,7 @@ td, th {
 header {
     height: 80px;
     border-bottom: 1px dotted var(--shadow-color);
+    background: #ffffff;
 
     .logo {
         display: inline-block;
@@ -126,18 +152,30 @@ main {
     --bs-alert-link-color: var(--bs-danger-text-emphasis);
 }
 
-
 .product_image {
-    height: 50px;
-    width: 50px;
-    padding: 5px;
+    height: 80px;
+    width: 80px;
     border: 1px solid var(--border-color);
-    background: #000000;
-
+    border-radius: 10px;
 
     img {
         height: 100%;
         width: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+
+.table_product_image {
+    height: 50px;
+    width: 50px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
     }
 }

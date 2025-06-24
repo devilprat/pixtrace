@@ -14,7 +14,7 @@ class ProductAnalysis(models.Model):
     market_drivers = models.TextField(null=True)
     market_challenges = models.TextField(null=True)
     remarks = models.TextField(null=True)
-    product = models.ForeignKey(Products, on_delete=models.CASCADE)
+    product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name='product_analysis')
 
     class Meta:
         db_table = 'product_analysis'

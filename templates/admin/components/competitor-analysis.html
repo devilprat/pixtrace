@@ -1,0 +1,48 @@
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Brand Model</th>
+                <th>Avg. Price</th>
+                <th>Market share est.</th>
+                <th>Analysis</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for analysis in product.competitor_analysis.all %}
+
+                <tr>
+                    <td>
+                        {{ analysis.brand }} - {{ analysis.model }}
+                    </td>
+                    <td>{{ analysis.average_price }}</td>
+                    <td>{{ analysis.market_share_estimate }}</td>
+                    <td>
+                        <div class="mb-2">
+                            <b><u>Target Audience:</u></b><br/>
+                            {{ analysis.target_audience }}
+                        </div>
+                        <div class="mb-2">
+                            <b><u>Key Features:</u></b><br/>
+                            {{ analysis.key_features }}
+                        </div>
+                        <div class="mb-2">
+                            <b><u>Strengths:</u></b><br/>
+                            {{ analysis.strengths }}
+                        </div>
+                        <div class="mb-2">
+                            <b><u>Weaknesses:</u></b><br/>
+                            {{ analysis.weaknesses }}
+                        </div>
+                        <div class="mb-2">
+                            <b><u>Market Positioning:</u></b><br/>
+                            {{ analysis.positioning }}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

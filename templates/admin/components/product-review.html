@@ -1,0 +1,30 @@
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Reviewer</th>
+                <th>Channel</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for analysis in product.product_review.all %}
+
+                <tr>
+                    <td>
+                        {{ analysis.author }}
+                        <a href="{{ analysis.link }}" target="_blank">
+                            <i class="bi bi-link-45deg"></i>
+                        </a>
+                        <br/>
+                        <small>{{ analysis.caption }}</small><br/>
+                        <small>{{ analysis.engagement }}</small>
+                    </td>
+                    <td>{{ analysis.platform }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
