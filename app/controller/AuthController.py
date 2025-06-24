@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 
-from app.helper.validation import validate_post_request
+from app.helper.Validation import validate_post_request
 from app.request.LoginRequest import LoginRequest
 from app.service import AuthService
 

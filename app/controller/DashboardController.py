@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from app.helper.validation import validate_post_request
+from app.helper.Validation import validate_post_request
 from app.request import SearchRequest
 from app.service import ProductService
 
