@@ -18,12 +18,13 @@ Including another URLconf
 from django.urls import path
 
 from app import settings
-from app.controller import AuthController, DashboardController
+from app.controller import AuthController, DashboardController, ProductController
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("", AuthController.authentication, name="index"),
     path("logout", AuthController.logout, name="logout"),
     path("admin/dashboard", DashboardController.index, name="dashboard"),
+    path("admin/history", ProductController.history, name="history"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

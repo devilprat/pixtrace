@@ -6,7 +6,7 @@
         <div class="col-12 mb-4">
             <h3>Dashboard</h3>
         </div>
-        <div class="col-12">
+        <div class="col-12 mb-4">
             {% if messages %}
                 {% for message in messages %}
                     <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
@@ -15,26 +15,29 @@
                 {% endfor %}
                 </ul>
             {% endif %}
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="file">Upload Product Image for Market & Competitor Analysis</label>
-                <div class="mb-3">
-                    <div class="input-group">
-                        <input id="file" type="file" name="file" class="form-control" accept="image/*"/>
-                        <div class="input-group-append">
-                            <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">
-                                <i class="bi bi-search"></i>
-                                Search
-                            </button>
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="file">Upload Product Image for Market & Competitor Analysis</label>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input id="file" type="file" name="file" class="form-control" accept="image/*"/>
+                                <div class="input-group-append">
+                                    <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">
+                                        <i class="bi bi-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                            {{ errors.file }}
                         </div>
-                    </div>
-                    {{ errors.file }}
+                    </form>
                 </div>
-            </form>
-
+            </div>
         </div>
         <div class="col-12 mb-4">
-            <hr/>
+
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">

@@ -18,5 +18,4 @@ def index(request, form=None):
         except Exception as e:
             messages.error(request, str(e))
     productList = ProductService.getLatest(request.user)
-    print(productList)
     return render(request, 'admin/dashboard.html', {'productList': productList})
