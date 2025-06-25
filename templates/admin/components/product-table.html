@@ -11,23 +11,29 @@
             </tr>
             </thead>
             <tbody>
-            {% for product in productList %}
+            {% if productList.count > 0 %}
+                {% for product in productList %}
+                    <tr>
+                        <td>
+                            <div class="table_product_image">
+                                <img src="/uploads/{{ product.image }}"/>
+                            </div>
+                        </td>
+                        <td>{{ product.created_at }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'analysis' %}?product={{ product.id }}">
+                                <i class="bi bi-pie-chart-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <td>
-                        <div class="table_product_image">
-                            <img src="/uploads/{{ product.image }}"/>
-                        </div>
-                    </td>
-                    <td>{{ product.created_at }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.category }}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" href="{% url 'analysis' %}?product={{ product.id }}">
-                            <i class="bi bi-pie-chart-fill"></i>
-                        </a>
-                    </td>
+                    <td colspan="5" class="text-center p-5">No data available</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
     </div>
