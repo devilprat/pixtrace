@@ -22,10 +22,10 @@ Where as youtube API to get the generic review of the product.
 1. Create a Database.
 2. Set the evironment variables
     - <b>PIXTRACE_DATABASE_NAME</b>  - <small>[ DB Name ]</small>
-    - <b>PIXTRACE_DATABASE_USERNAME</b> <small>[ DB Username ]</small>
-    - <b>PIXTRACE_DATABASE_PASSWORD</b> <small>[ DB Password ]</small>
-    - <b>OPENAI_API_KEY</b> <small>[ ChatGPT API key ]</small>
-    - <b>YOUTUBE_API_KEY</b> <small>[ Google API Key for Youtube]</small>
+    - <b>PIXTRACE_DATABASE_USERNAME</b> - <small>[ DB Username ]</small>
+    - <b>PIXTRACE_DATABASE_PASSWORD</b> - <small>[ DB Password ]</small>
+    - <b>OPENAI_API_KEY</b> - <small>[ ChatGPT API key ]</small>
+    - <b>YOUTUBE_API_KEY</b> - <small>[ Google API Key for Youtube]</small>
 3. Run <i>Python manage.py migrate</i>
 4. Run <i>Python manage.py createsuperuser</i>
 
