@@ -38,7 +38,11 @@ def detectImage(product):
                 ]
             )
             content = response.choices[0].message.content
-            return json.loads(content)
+            formatted = re.sub(r"```json|```", "", content).strip()
+            try:
+                return json.loads(formatted)
+            except json.JSONDecodeError:
+                return formatted
         except Exception as e:
             print(e)
             raise Exception("Failed to analyze the image.Please try again later")
@@ -65,9 +69,7 @@ def analyze(product):
                 ]
             )
             content = response.choices[0].message.content
-            print(content)
             formatted = re.sub(r"```json|```", "", content).strip()
-            print(formatted)
             try:
                 return json.loads(formatted)
             except json.JSONDecodeError:

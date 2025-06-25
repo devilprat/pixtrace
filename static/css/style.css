@@ -12,6 +12,10 @@
     font-size: 14px;
 }
 
+main {
+    padding-top: 100px;
+}
+
 /* --------------------- */
 /* TABLE */
 /* --------------------- */
@@ -21,6 +25,20 @@ table.middle td, th {
 
 th {
     font-size: 12px;
+}
+
+.table_product_image {
+    height: 50px;
+    width: 50px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 }
 
 /* --------------------- */
@@ -59,6 +77,24 @@ th {
 .input-group-text.btn {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+}
+
+/* --------------------- */
+/* CARD */
+/* --------------------- */
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 0px !important;
+}
+
+
+/* --------------------- */
+/* CHART */
+/* --------------------- */
+
+.chart {
+    width: 100%;
 }
 
 /* --------------------- */
@@ -124,18 +160,9 @@ header {
     }
 }
 
-main {
-    padding-top: 100px;
-}
-
 /* --------------------- */
-/* GENERAL */
+/* ERROR */
 /* --------------------- */
-.card-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 0px !important;
-}
 
 .errorlist {
     color: red;
@@ -152,6 +179,10 @@ main {
     --bs-alert-link-color: var(--bs-danger-text-emphasis);
 }
 
+
+/* --------------------- */
+/* GENERAL */
+/* --------------------- */
 .product_image {
     height: 80px;
     width: 80px;
@@ -166,32 +197,14 @@ main {
     }
 }
 
-.table_product_image {
-    height: 50px;
-    width: 50px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
 
-    img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-    }
-}
-
-.chart {
-    width: 100%;
-}
+/* --------------------- */
+/* PRINT */
+/* --------------------- */
 
 @media print {
-
     @page {
-        padding: 30px 0px !important;
-    }
-
-    .hide-print {
-        display: none;
+        padding: 30px 10px !important;
     }
 
     .container,
@@ -203,64 +216,144 @@ main {
         padding: 0 !important;
     }
 
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
     main {
         padding-top: 0px;
-        padding: 15px !important;
     }
 
-    table {
-        page-break-inside: auto;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    tr {
-        /*page-break-after: auto;*/
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    tfoot {
-        display: table-footer-group;
+    .hide-print {
+        display: none;
     }
 
     .card {
         border: unset !important;
     }
 
-    .print_chart .card {
+    .chart-container {
+        width: 100%;
+        page-break-after: always;
         border: 1px solid var(--border-color) !important;
+    }
+
+    .chart-container .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #sales_history {
+        height: 80vh !important;
+    }
+
+    #units_sales_history,
+    #sales_prediction,
+    #units_sales_prediction {
+        height: 98vh !important;
     }
 
     .apexcharts-toolbar {
         display: none !important; /* Hide zoom/export buttons */
     }
 
-    .print_chart {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 100%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .page-break-inside {
-        page-break-inside: avoid;
-        break-inside: avoid;
-    }
-
     .page-break-after {
         page-break-after: always;
     }
-
-
 }
+
+
+/*@media print {*/
+
+/*    @page {*/
+/*        padding: 30px 0px !important;*/
+/*    }*/
+
+/*    .hide-print {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .container,*/
+/*    .container-fluid,*/
+/*    .row {*/
+/*        width: 100% !important;*/
+/*        max-width: 100% !important;*/
+/*        margin: 0 !important;*/
+/*        padding: 0 !important;*/
+/*    }*/
+
+/*    body {*/
+/*        margin: 0;*/
+/*        padding: 0;*/
+/*    }*/
+
+/*    main {*/
+/*        padding-top: 0px;*/
+/*    }*/
+
+/*    table {*/
+/*        border-collapse: collapse;*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    tr {*/
+/*        break-inside: avoid;*/
+/*        page-break-inside: avoid;*/
+/*    }*/
+
+/*    thead {*/
+/*        display: table-header-group; !* ensures header repeats on each page *!*/
+/*    }*/
+
+/*    tfoot {*/
+/*        display: table-footer-group;*/
+/*    }*/
+
+/*    .responsive {*/
+/*        break-inside: avoid;*/
+/*        page-break-inside: avoid;*/
+/*    }*/
+
+/*    .card {*/
+/*        border: unset !important;*/
+/*    }*/
+
+/*    .print_chart .card {*/
+/*        border: 1px solid var(--border-color) !important;*/
+/*    }*/
+
+/*    .apexcharts-toolbar {*/
+/*        display: none !important; !* Hide zoom/export buttons *!*/
+/*    }*/
+
+/*    .print_chart {*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        align-items: center;*/
+/*        text-align: center;*/
+/*        width: 100%;*/
+/*        margin-left: auto !important;*/
+/*        margin-right: auto !important;*/
+/*    }*/
+
+/*    .page-break-inside {*/
+/*        page-break-inside: avoid;*/
+/*        break-inside: avoid;*/
+/*    }*/
+
+/*    .page-break-after {*/
+/*        page-break-after: always;*/
+/*    }*/
+
+/*}*/
+
+/*@media print and (orientation: portrait) {*/
+/*    .print_chart {*/
+/*        padding-top: 15px;*/
+/*    }*/
+/*}*/
+
+/*@media print and (orientation: landscape) {*/
+/*    .print_chart {*/
+/*        display: flex;*/
+/*        padding-top: 125px;*/
+/*        page-break-after: always;*/
+/*    }*/
+/*}*/

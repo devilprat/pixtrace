@@ -65,9 +65,10 @@ def save(request):
                 user=request.user,
             )
             productDetect = detectImage(product)
-            product.name = productDetect['name']
-            product.category = productDetect['category']
-            product.save()
+            if productDetect is not None:
+                product.name = productDetect['name']
+                product.category = productDetect['category']
+                product.save()
             analysis = analyze(product)
             if analysis is not None:
                 for productAnalysis in analysis['product_analysis']:
