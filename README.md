@@ -11,7 +11,7 @@ Project to process the image and generate the business analytics of the product.
 This project is based of Open AI api to process and analyze the product.
 Where as youtube API to get the generic review of the product.
 
-# System Requirement
+# Software Requirement
 
 - Python 3.13.5
 - Django 5.2.3
