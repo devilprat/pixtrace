@@ -21,5 +21,6 @@ def index(request, form=None):
             return redirect('dashboard')
         except Exception as e:
             messages.error(request, str(e))
+            return redirect('dashboard')
     productList = ProductService.getLatest(request.user)
     return render(request, 'admin/dashboard.html', {'productList': productList})
