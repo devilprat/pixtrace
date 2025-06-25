@@ -3,93 +3,106 @@
 {% block title %}Product Analysis - {{ product.name }}{% endblock %}
 {% block content %}
     <div id="print">
-        <div class="row">
-            <div class="col-12 mb-4">
-                <div class="d-flex gap-4 align-items-start">
-                    <div class="product_image">
-                        <img src="/uploads/{{ product.image }}"/>
-                    </div>
-                    <div>
-                        <h3>
-                            Product Analysis: {{ product.name }}
-                            <button type="button" class="btn btn-sm btn-primary hide-print" onclick="window.print()">
-                                <i class="bi bi-printer-fill"></i>
-                            </button>
-                        </h3>
-                        <small>Category: {{ product.category }}</small><br/>
-                        <small>published at: {{ product.created_at }}</small>
-                    </div>
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="d-flex gap-4 align-items-start">
+                <div class="product_image">
+                    <img src="/uploads/{{ product.image }}"/>
+                </div>
+                <div>
+                    <h3>
+                        Product Analysis: {{ product.name }}
+                        <button type="button" class="btn btn-sm btn-primary hide-print" onclick="window.print()">
+                            <i class="bi bi-printer-fill"></i>
+                        </button>
+                    </h3>
+                    <small>Category: {{ product.category }}</small><br/>
+                    <small>published at: {{ product.created_at }}</small>
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-4 chart-container">
-                <div class="card">
-                    <div id="sales_history" class="card-body"></div>
-                </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 chart-container">
+            <div class="card">
+                <div id="sales_history" class="card-body"></div>
             </div>
-            <div class="col-12 col-md-6 mb-4 chart-container">
-                <div class="card">
-                    <div id="units_sales_history" class="card-body"></div>
-                </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 chart-container">
+            <div class="card">
+                <div id="units_sales_history" class="card-body"></div>
             </div>
-            <div class="col-12 mb-4 page-break-after">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Market History
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {% include 'admin/components/market-history.html' %}
+        </div>
+        <div class="col-12 mb-4 page-break-after">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Market History
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6 mb-4 chart-container">
-                <div class="card">
-                    <div id="sales_prediction" class="card-body"></div>
+                <div class="card-body">
+                    {% include 'admin/components/market-history.html' %}
                 </div>
             </div>
-            <div class="col-12 col-md-6 mb-4 chart-container">
-                <div class="card">
-                    <div id="units_sales_prediction" class="card-body"></div>
-                </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 chart-container">
+            <div class="card">
+                <div id="sales_prediction" class="card-body"></div>
             </div>
-            <div class="col-12 mb-4 page-break-after">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Market Prediction
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {% include 'admin/components/market-prediction.html' %}
-                    </div>
-                </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 chart-container">
+            <div class="card">
+                <div id="units_sales_prediction" class="card-body"></div>
             </div>
-            <div class="col-12 mb-4 page-break-after">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Competitor Analysis
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {% include 'admin/components/competitor-analysis.html' %}
+        </div>
+        <div class="col-12 mb-4 page-break-after">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Market Prediction
                     </div>
                 </div>
-            </div>
-            <div class="col-12 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">
-                            Audience Review
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {% include 'admin/components/product-review.html' %}
-                    </div>
+                <div class="card-body">
+                    {% include 'admin/components/market-prediction.html' %}
                 </div>
             </div>
-
+        </div>
+        <div class="col-12 mb-4 page-break-after">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Competitor Analysis
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/competitor-analysis.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4 page-break-after">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Distributors
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/distributors.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Audience Review
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% include 'admin/components/product-review.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-center mb-4">
+            <i>* This is an AI generate report</i>
         </div>
     </div>
 {% endblock %}

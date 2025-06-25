@@ -1,0 +1,30 @@
+<div class="col-12">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for analysis in product.distributors.all %}
+
+                <tr>
+                    <td>
+                        {{ analysis.name }}
+                        <a href="{{ analysis.website }}" target="_blank">
+                            <i class="bi bi-link-45deg"></i>
+                        </a>
+                    </td>
+                    <td>{{ analysis.contact }}</td>
+                    <td>{{ analysis.email }}</td>
+                    <td>{{ analysis.address }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

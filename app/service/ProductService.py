@@ -3,6 +3,7 @@ from django.db import transaction
 from django.db.models import Prefetch
 
 from app.models import Products, ProductAnalysis, ProductReview, CompetitorAnalysis
+from app.models.Distributor import Distributor
 from app.service.ChatGptService import analyze, detectImage
 from app.service.YoutubeService import getYoutubeReview
 
@@ -20,11 +21,11 @@ def getById(id, user):
         return (Products.objects.prefetch_related(
             'product_analysis',
             'product_review',
-            'competitor_analysis'
+            'competitor_analysis',
+            'distributors'
         ).get(id=id, user=user))
     except Exception as e:
         print(e)
-        print("aa")
         raise Exception(str(e))
 
 
@@ -96,6 +97,15 @@ def save(request):
                         weaknesses=competitorAnalysis['weaknesses'],
                         market_share_estimate=competitorAnalysis['market_share_estimate'],
                         positioning=competitorAnalysis['positioning'],
+                        product=product
+                    )
+                for distributor in analysis['distributor']:
+                    Distributor.objects.create(
+                        name=distributor['name'],
+                        address=distributor['address'],
+                        contact=distributor['contact'],
+                        email=distributor['email'],
+                        website=distributor['website'],
                         product=product
                     )
             youtubeReviews = getYoutubeReview(product.name)
