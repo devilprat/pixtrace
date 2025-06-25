@@ -3,7 +3,7 @@ import os
 
 
 def getYoutubeKey():
-    return os.getenv("YOUTUBE_API_KEY");
+    return os.getenv("YOUTUBE_API_KEY")
 
 
 def getYoutubeReview(productName):

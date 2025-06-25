@@ -77,9 +77,9 @@ WSGI_APPLICATION = "app.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pixtrace',
-        'USER': 'root',
-        'PASSWORD': 'Pratik@123$',
+        'NAME': os.getenv("PIXTRACE_DATABASE_NAME"),
+        'USER': os.getenv("PIXTRACE_DATABASE_USERNAME"),
+        'PASSWORD': os.getenv("PIXTRACE_DATABASE_PASSWORD"),
         'HOST': 'localhost',  # or IP address of DB server
         'PORT': '3306',
     }
