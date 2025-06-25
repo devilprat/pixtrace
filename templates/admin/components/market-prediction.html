@@ -2,7 +2,7 @@
 {% now "Y" as current_year %}
 <div class="col-12">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Year</th>
@@ -35,17 +35,17 @@
                                 {{ analysis.remarks }}
                             </div>
                         </td>
-                        <td>{{ analysis.average_rate }}</td>
+                        <td>${{ analysis.average_rate }}</td>
                         <td>
                             {% if '-' in analysis.growth_rate %}
-                                <b class="text-danger">{{ analysis.growth_rate|cut:"-" }}</b>
+                                <b class="text-danger">{{ analysis.growth_rate|cut:"-" }}%</b>
                             {% else %}
-                                <b class="text-success">{{ analysis.growth_rate }}</b>
+                                <b class="text-success">{{ analysis.growth_rate }}%</b>
                             {% endif %}
                         </td>
                         <td>
-                            <span class="badge {% if analysis.market_trend == 'plateau' %}bg-danger
-                                {% elif analysis.market_trend == 'decline' %}bg-danger{% else %}bg-primary{% endif %}">
+                            <span class="badge {% if analysis.market_trend == 'plateau' %}bg-warning
+                                {% elif analysis.market_trend == 'decline' %}bg-danger{% else %}bg-success{% endif %}">
                                 {{ analysis.market_trend }}
                             </span>
                         </td>

@@ -15,7 +15,7 @@
 /* --------------------- */
 /* TABLE */
 /* --------------------- */
-td, th {
+table.middle td, th {
     vertical-align: middle;
 }
 
@@ -178,4 +178,89 @@ main {
         object-fit: cover;
         border-radius: 10px;
     }
+}
+
+.chart {
+    width: 100%;
+}
+
+@media print {
+
+    @page {
+        padding: 30px 0px !important;
+    }
+
+    .hide-print {
+        display: none;
+    }
+
+    .container,
+    .container-fluid,
+    .row {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        padding-top: 0px;
+        padding: 15px !important;
+    }
+
+    table {
+        page-break-inside: auto;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    tr {
+        /*page-break-after: auto;*/
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    .card {
+        border: unset !important;
+    }
+
+    .print_chart .card {
+        border: 1px solid var(--border-color) !important;
+    }
+
+    .apexcharts-toolbar {
+        display: none !important; /* Hide zoom/export buttons */
+    }
+
+    .print_chart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .page-break-inside {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .page-break-after {
+        page-break-after: always;
+    }
+
+
 }

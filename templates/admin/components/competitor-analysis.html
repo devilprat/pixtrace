@@ -1,6 +1,6 @@
 <div class="col-12">
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Brand Model</th>
@@ -16,8 +16,8 @@
                     <td>
                         {{ analysis.brand }} - {{ analysis.model }}
                     </td>
-                    <td>{{ analysis.average_price }}</td>
-                    <td>{{ analysis.market_share_estimate }}</td>
+                    <td>${{ analysis.average_price }}</td>
+                    <td>{{ analysis.market_share_estimate }}%</td>
                     <td>
                         <div class="mb-2">
                             <b><u>Target Audience:</u></b><br/>
