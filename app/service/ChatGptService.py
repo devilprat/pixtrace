@@ -20,7 +20,7 @@ def detectImage(product):
                     {
                         "role": "user",
                         "content": (
-                            "What product or brand do you recognize in this image?"
+                            "What product or brand do you recognize in this image?.Give me the detail name with its model also."
                             "Use this JSON format in text: {\"name\":\"\",\"category\":\"\"}"
                         )
                     },
