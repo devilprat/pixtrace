@@ -3,7 +3,7 @@
 Project to process the image and generate the business analytics of the product.
 
 1. Analyze the past market history of the product.
-2. Predict the future market history of the product.
+2. Predict the future market of the product.
 3. Competitor Analysis of the product.
 4. List of product distributors.
 5. Youtube review of the products
